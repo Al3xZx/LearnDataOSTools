@@ -11,4 +11,4 @@ ENV JAVA_HOME /lib/jvm/java-17-openjdk-amd64
 
 USER airflow
 
-RUN pip install apache-airflow apache-airflow-providers-apache-spark pyspark
+#RUN pip install apache-airflow apache-airflow-providers-apache-spark pyspark
