@@ -11,3 +11,11 @@
 
 Configurazione connessione spark su apache airflow
 ![img_3.png](img_3.png)
+
+minio conn config:
+![img_4.png](img_4.png)
+
+dremio nessie config
+https://www.dremio.com/blog/intro-to-dremio-nessie-and-apache-iceberg-on-your-laptop/
+![img_5.png](img_5.png)
+![img_6.png](img_6.png)
