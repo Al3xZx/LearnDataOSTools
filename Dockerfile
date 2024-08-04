@@ -9,6 +9,9 @@ RUN apt-get update && \
 # Set JAVA_HOME environment variable
 ENV JAVA_HOME /lib/jvm/java-17-openjdk-amd64
 
+COPY requirements.txt ./requirements.txt
 USER airflow
+# Set up additional Python dependencies
+RUN pip install -r ./requirements.txt
 
 #RUN pip install apache-airflow apache-airflow-providers-apache-spark pyspark
