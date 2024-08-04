@@ -23,8 +23,8 @@ To run this project using Docker, follow these steps:
    Clone the repository containing the `docker-compose.yml` file and other configuration files:
 
    ```bash
-   git clone https://github.com/your-username/big-data-pipeline-project.git
-   cd big-data-pipeline-project
+   git clone https://github.com/Al3xZx/LearnDataOSTools.git
+   cd LearnDataOSTools
    ```
    
 2. **Build and Start Containers**
