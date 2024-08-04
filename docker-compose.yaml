@@ -42,10 +42,12 @@ services:
   dremio:
     image: dremio/dremio-oss:25.0.0
     ports:
-      - "9047:9047"
-      - "31010:31010"
-      - "45678:45678"
+      - "9047:9047" # UI port
+      - "31010:31010" # ODBC/JDBC client port
+      - "45678:45678" # Internal API port
       - "32010:32010"
+    volumes:
+      - dremio-data:/opt/dremio/data
     depends_on:
       - minio
     networks:
@@ -111,12 +113,20 @@ services:
     command:  bash -c "pip install -r requirements.txt && airflow webserver"
     ports:
       - "8080:8080"
+    healthcheck:
+      test: [ 'CMD-SHELL', "[ -f /opt/airflow/airflow-webserver.pid ]" ]
+      interval: 30s
+      timeout: 30s
+      retries: 13
     depends_on:
-      - scheduler
+      - postgres
 
   scheduler:
     <<: *airflow-common
     command: bash -c "pip install -r requirements.txt && airflow db migrate && airflow users create --username admin --firstname Alessandro --lastname Molinaro --role Admin --email alessandro.molinaro96@gmail.com --password admin && airflow scheduler"
+    depends_on:
+      webserver:
+        condition: service_healthy
 
   zookeeper:
       image: confluentinc/cp-zookeeper:7.4.0
@@ -226,6 +236,7 @@ services:
 
 volumes:
   minio-data:
+  dremio-data:
 
 networks:
   data_os_network:
