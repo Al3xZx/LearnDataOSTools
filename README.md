@@ -54,6 +54,8 @@ After starting the containers, you'll need to manually create the following conn
    - **Host**: `spark://spark-master`
    - **Port**: `7077`
 
+(see notes/note.md)
+
 ## Dashboard URLs
 
 - **Airflow**: [http://localhost:8080/](http://localhost:8080/)
